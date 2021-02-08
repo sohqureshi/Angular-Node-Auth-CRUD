@@ -1,0 +1,36 @@
+<div class="fileUploadWrapper">
+    <form [formGroup]="form">
+        <div class="row">
+            <!-- Progress Bar -->
+            <div class="col-md-12" *ngIf="progress">
+                <div class="progress form-group">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                        [style.width.%]="progress">
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="col-md-8">
+                <div class="flex d-flex image-list" *ngFor="let file of fileArr; let i = index">
+                    <div class="profile" style="justify-content: start;">
+                        <img [src]="sanitize(file['url'])" alt="">
+                    </div>
+                    &nbsp;&nbsp;
+                    <div  style="justify-content: start;">
+                        {{file.item.name}}
+                    </div>
+                </div>
+                <p class="message">{{msg}}</p>
+            </div>
+            <div class="col-md-4">
+                <div class="fileupload" appDragDropFileUpload (click)="fileField.click()"
+                    (fileDropped)="upload($event)" style="    background-color: rgb(244 244 244); border: 1px dashed rgba(0, 0, 0, 0.2);">
+                    <span class="ddinfo">Choose a file or drag here</span>
+                    <input type="file" name="avatars" #fileField (change)="upload($event.target.files)" hidden multiple>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
