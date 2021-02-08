@@ -10,8 +10,8 @@ import { RegisterComponent } from './user-pages/register/register.component';
 const routes: Routes = [
   { path: '', redirectTo: 'moment', pathMatch: 'full' },
   { path: 'login', component: RegisterComponent},
-  { path: 'moment', component: MomentComponent},
-  { path: 'moment/add', component: MomentAddComponent},
+  { path: 'moment', component: MomentComponent, canActivate: [AuthGuard]},
+  { path: 'moment/add', component: MomentAddComponent, canActivate: [AuthGuard]},
   // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   // { path: 'basic-ui', loadChildren: () => import('./basic-ui/basic-ui.module').then(m => m.BasicUiModule) },
   // { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsDemoModule) },
